@@ -17,7 +17,8 @@ debian software initialization for:
   * install of zmq, disruptor, and reactor libraries
    
   * install of saddle, breeze, and scikit-learn libaries
-  *
+  
+
 bashrc, bash_profile, profile, development-env and git-env scripts
 
 vim defaults, syntax highlighting, color schemes

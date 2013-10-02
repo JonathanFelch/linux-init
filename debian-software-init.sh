@@ -1,4 +1,5 @@
 
+
 # Add repository for oracle's java 
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
@@ -6,6 +7,11 @@ sudo apt-get update
 # Basic tools I always want
 sudo apt-get -y install aptitude curl 
 sudo apt-get -y install vim-gnome#
+
+# Add scala syntax checking for vim
+
+mkdir -p ~/.vim/{ftdetect,indent,syntax} && for d in ftdetect indent syntax ; do curl -o ~/.vim/$d/scala.vim https://raw.github.com/scala/scala-dist/master/tool-support/src/vim/$d/scala.vim; done
+
 
 # Remove Open JDK Java 
 sudo apt-get purge openjdk-\* 
@@ -80,6 +86,7 @@ sudo make install
 # clean up
 cd ~/.virtualenvs/py27/
 rm -rf build
+
 
 # final fun stuff
 #

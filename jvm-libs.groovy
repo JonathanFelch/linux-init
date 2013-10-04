@@ -1,3 +1,16 @@
+
+
+// define STAGING directory.... Must end in /tmp
+def STAGING=System.getenv()['GRAPE_STAGING'];
+if (!STAGING || !(STAGING =~ /tmp$/)) {
+    println "Downloads must specify local repository ending with tmp.  Use -Dgrape.roo=XYZ of specify an Java System value!"
+    System.exit(0)
+}
+
+
+// specify LIB dircetory
+def LIB=STAGING.replaceAll('/tmp','')
+
 // define our core libraries ... code is data ... data is code
 
 def coreLibraries = [ 
@@ -20,7 +33,8 @@ def coreLibraries = [
     [org:'org.apache.directory.studio', artifact:'org.apache.commons.collections', version:'3.2.1'],
     [org:'commons-net', artifact:'commons-net', version:'3.3'],
     [org:'commons-configuration', artifact:'commons-configuration', version:'1.8'],
-    [org:'com.googlecode.efficient-java-matrix-library', artifact:'ejml', version:'0.23'],
+    [org:'com.googlecode.efficient-java-matrix-lib
+    rary', artifact:'ejml', version:'0.23'],
     [org:'joda-time', artifact:'joda-time', version:'2.3'],
     [org:'org.joda', artifact:'joda-convert', version:'1.2'],
     [org:'com.google.guava', artifact:'guava', version:'14.0.1'],
@@ -38,6 +52,7 @@ def coreLibraries = [
  */
 def types = [ 'jar' ]  
 
+// closure to make execution and exception handing a one-liner
 def sourceLib = { props -> 
   try { groovy.grape.Grape.grab(props) } catch(Exception e) { println e } 
 }
@@ -49,13 +64,9 @@ coreLibraries.each { lib ->
    types.each { tuple['type'] = it; println tuple; sourceLib(tuple) }
 }
 
-// clean up and sanitize the library path
-def STAGING=System.getenv()['GRAPE_STAGING'];
-def LIB=STAGING.replaceAll('/tmp','')
- 
+// linux command to be sent to shell 
 def cmd = "find $STAGING -name *.jar -exec mv {} $LIB \\;"
 cmd.execute();
 
+// delete tmp directory 
 new File(STAGING).deleteDir()
-
-

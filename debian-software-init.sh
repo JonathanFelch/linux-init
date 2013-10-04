@@ -100,3 +100,9 @@ rm -rf build
 sudo apt-get -y install libzmq-dev
 pip install tornado pygments pyzmq
 
+# Lastly install common JVM libraries
+
+groovy -Dgrape.root=$GRAPE_STAGING jvm-libs.groovy 
+
+
+

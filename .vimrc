@@ -12,7 +12,7 @@ set noeol
 set showmode
 
 " default (except for scala) tabs to four spaces
-set smartindent
+" set smartindent
 set expandtab
 set tabstop=4
 set shiftwidth=4

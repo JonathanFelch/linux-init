@@ -51,4 +51,4 @@ endif
 
 "  Use the file type plugin --> add scala types
 filetype plugin on
-
+call pathpgen#infect() 

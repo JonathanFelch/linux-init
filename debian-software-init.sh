@@ -1,5 +1,4 @@
 
-
 # Add repository for oracle's java 
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
@@ -7,6 +6,7 @@ sudo apt-get update
 # Basic tools I always want
 sudo apt-get -y install aptitude curl 
 sudo apt-get -y install vim-gnome#
+sudo apt-get -y install tmux
 
 # Add scala syntax checking for vim
 

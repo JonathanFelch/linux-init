@@ -1,9 +1,14 @@
 colors ir_black
 
+" initialize pathogen, a plugin for managing plugins
+execute pathogen#infect() 
+
+filetype plugin indent on
+
 set nocompatible
 set backspace=indent,eol,start
 set history=64
-
+set number
 " Show line number or cursor position
 set ruler
 set noeol
@@ -51,4 +56,3 @@ endif
 
 "  Use the file type plugin --> add scala types
 filetype plugin on
-call pathpgen#infect() 

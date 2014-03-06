@@ -27,3 +27,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+# intellij
+alias idea="idea.sh 1>/dev/null 2>&1 & disown"
+
